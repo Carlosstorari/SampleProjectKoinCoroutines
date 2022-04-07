@@ -19,7 +19,10 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
     }
 
     fun getFilmesCoroutines() {
+        //cria contexto de coroutines
         CoroutineScope(Dispatchers.Main).launch {
+            /**
+             * aqui dentro apenas funções suspended podem ser chamadas **/
             val filmes = withContext(Dispatchers.Default) {
                 repository.getFilmesCoroutines()
             }
